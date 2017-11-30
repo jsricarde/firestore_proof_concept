@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { UserService } from './users/user.service';
+import { BookService } from './booking/book.service';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -14,10 +16,10 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule
   ],
-  providers: [],
-  bootstrap: [ AppComponent ]
+  providers: [UserService, BookService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
