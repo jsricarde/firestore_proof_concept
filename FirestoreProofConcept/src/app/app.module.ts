@@ -14,13 +14,15 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { UserService } from './users/user.service';
 import { BookService } from './booking/book.service';
 import { BookFormComponent } from './booking/book-form/book-form.component';
+import { BooklistComponent } from './booking/booklist/booklist.component';
 
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookFormComponent
+    BookFormComponent,
+    BooklistComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,6 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule
   ],
   providers: [ UserService, BookService ],
-  bootstrap: [ AppComponent, BookFormComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

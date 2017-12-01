@@ -1,26 +1,30 @@
-<div id="family-form-div" fxLayout="row" fxLayoutAlign="center start">
+<div id="book-form-div" fxLayout="row" fxLayoutAlign="center start">
   <form #formDir="ngForm" fxFlex="40%" fxFlex.xs="90%">
     <h2 class="mat-headline">Create Book</h2>
     <md-form-field class="material-full-width">
-      <input mdInput id="requirements" placeholder="requirements" [(ngModel)]="book.requirements" name="requirements" required>
+      <input mdInput id="requirements" placeholder="Requirements" [(ngModel)]="book.requirements" name="requirements" required>
     </md-form-field>
+
+    <md-select class="material-full-width" id="status" class="material-full-width" [(ngModel)]="book.status" name="status" placeholder="Status"
+      required>
+      <md-option value="Checked">Checked</md-option>
+      <md-option value="Check-in">Checked-in</md-option>
+    </md-select>
+
     <md-form-field class="material-full-width">
-      <input mdInput id="status" placeholder="status" [(ngModel)]="book.status" name="status" required>
-    </md-form-field>
-    <md-form-field class="material-full-width">
-      <input class="" mdInput [mdDatepicker]="picker" (focus)="picker.open()" [min]="book.start_date" placeholder="Choose a date"
+      <input class="" mdInput [mdDatepicker]="picker" (focus)="picker.open()" [min]="book.start_date" placeholder="Choose a start date"
         [(ngModel)]="book.start_date" name="start_date" readonly required>
       <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
       <md-datepicker #picker [startAt]="book.start_date"></md-datepicker>
     </md-form-field>
 
     <md-form-field class="material-full-width">
-      <input class="" mdInput [mdDatepicker]="pickerEnd" (focus)="pickerEnd.open()" [min]="book.end_date" placeholder="Choose a date"
+      <input class="" mdInput [mdDatepicker]="pickerEnd" (focus)="pickerEnd.open()" [min]="book.end_date" placeholder="Choose a end date"
         [(ngModel)]="book.end_date" name="end_date" readonly required>
       <md-datepicker-toggle mdSuffix [for]="pickerEnd"></md-datepicker-toggle>
       <md-datepicker #pickerEnd [startAt]="book.end_date"></md-datepicker>
     </md-form-field>
 
-    <button type="button" [disabled]="!formDir.valid" color="accent" id="form-family-btn-create-account" md-raised-button (click)="createBook()">Create Book</button>
+    <button type="button" [disabled]="!formDir.valid" color="accent" id="form-book-btn-create-account" md-raised-button (click)="createBook(this.formDir)">Create Book</button>
   </form>
 </div>

@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BookFormComponent } from './book-form/book-form.component';
 import { UserService } from '../users/user.service';
 import { BookService } from '../booking/book.service';
+import { BooklistComponent } from './booklist/booklist.component';
 // import { BookingRoutingModule } from '../booking/booking-routing.module';
 
 @NgModule({
@@ -18,7 +19,7 @@ import { BookService } from '../booking/book.service';
     FormsModule,
     // BookingRoutingModule
   ],
-  declarations: [BookFormComponent],
+  declarations: [BookFormComponent, BooklistComponent],
   providers: [UserService, BookService]
 })
 export class BookingModule { }

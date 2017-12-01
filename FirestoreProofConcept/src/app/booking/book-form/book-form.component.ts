@@ -9,9 +9,10 @@ import { Book } from '../book';
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
-  styleUrls: [ './book-form.component.css' ]
+  styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnInit {
+
   book: Book = {
     requirements: '', start_date: new Date, end_date: new Date, status: '', id: '',
     user: ''
@@ -22,10 +23,11 @@ export class BookFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  createBook(): void {
+  createBook(form): void {
     const userRef = this.userService.getReferenceUser().ref;
     this.book.user = userRef;
     this.bookService.create(this.book);
+    form.reset();
   }
 
 }

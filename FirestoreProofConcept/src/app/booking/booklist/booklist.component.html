@@ -1,0 +1,10 @@
+<div id="booklist-div" fxLayout="row" fxLayoutAlign="center start">
+  <div id="booklist" fxFlex="40%" fxFlex.xs="90%">
+    <h2 class="mat-headline">Booklist</h2>
+    <div fxLayout="row" *ngFor="let book of books | async">
+      <span fxFlex="20%">{{ book.status }}</span>
+      <span fxFlex="20%">{{ book.start_date | date }}</span>
+      <span fxFlex="20%">{{ book.end_date | date }}</span>
+    </div>
+  </div>
+</div>
