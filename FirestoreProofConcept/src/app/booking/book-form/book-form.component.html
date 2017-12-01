@@ -1,0 +1,26 @@
+<div id="family-form-div" fxLayout="row" fxLayoutAlign="center start">
+  <form #formDir="ngForm" fxFlex="40%" fxFlex.xs="90%">
+    <h2 class="mat-headline">Create Book</h2>
+    <md-form-field class="material-full-width">
+      <input mdInput id="requirements" placeholder="requirements" [(ngModel)]="book.requirements" name="requirements" required>
+    </md-form-field>
+    <md-form-field class="material-full-width">
+      <input mdInput id="status" placeholder="status" [(ngModel)]="book.status" name="status" required>
+    </md-form-field>
+    <md-form-field class="material-full-width">
+      <input class="" mdInput [mdDatepicker]="picker" (focus)="picker.open()" [min]="book.start_date" placeholder="Choose a date"
+        [(ngModel)]="book.start_date" name="start_date" readonly required>
+      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+      <md-datepicker #picker [startAt]="book.start_date"></md-datepicker>
+    </md-form-field>
+
+    <md-form-field class="material-full-width">
+      <input class="" mdInput [mdDatepicker]="pickerEnd" (focus)="pickerEnd.open()" [min]="book.end_date" placeholder="Choose a date"
+        [(ngModel)]="book.end_date" name="end_date" readonly required>
+      <md-datepicker-toggle mdSuffix [for]="pickerEnd"></md-datepicker-toggle>
+      <md-datepicker #pickerEnd [startAt]="book.end_date"></md-datepicker>
+    </md-form-field>
+
+    <button type="button" [disabled]="!formDir.valid" color="accent" id="form-family-btn-create-account" md-raised-button (click)="createBook()">Create Book</button>
+  </form>
+</div>

@@ -18,12 +18,11 @@ export class BookService {
     this.booksCollection = this.afs.collection('bookings');
   }
 
-  create(content: string) {
-    const book: Book = {
-      end_date: new Date(), start_date: new Date(), requirements: 'test_req',
-      status: 'Check-In', user: ''
-    };
-    return this.booksCollection.add(book);
+  create(bookData: Book) {
+    // Persist a document id
+    const id = this.afs.createId();
+    bookData.id = id;
+    this.booksCollection.add(bookData);
   }
 
   getByUserRef(userRef) {

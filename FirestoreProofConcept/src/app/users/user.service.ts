@@ -13,14 +13,15 @@ export class UserService {
 
   user: Observable<User | null>;
   usersCollection: AngularFirestoreCollection<User>;
+  uid = '1RFOYVqtEmVPlTQLPDHu';
 
   constructor(private afs: AngularFirestore) {
-    this.usersCollection = this.afs.collection('users', (ref) => ref.orderBy('created_at', 'desc').limit(5));
+    this.usersCollection = this.afs.collection('users',
+      (ref) => ref.orderBy('created_at', 'desc').limit(5));
   }
 
   getReferenceUser() {
-    return this.afs.doc<User>('users/1RFOYVqtEmVPlTQLPDHu');
-    // return this.afs.collection<User>('users').doc('1RFOYVqtEmVPlTQLPDHu');
+    return this.afs.doc<User>(`users/${this.uid}`);
   }
 
 }
