@@ -1,0 +1,19 @@
+<div id="booklist-div" fxLayout="row" fxLayoutAlign="center start">
+  <div id="booklist" fxFlex="40%" fxFlex.xs="90%">
+    <h2 class="mat-headline">Booklist</h2>
+    <!-- <div *ngFor="let book of booksList" fxLayout="row">
+      <span fxFlex="20%">{{ book.firstname }} {{ book.lastname }}</span>
+      <span fxFlex="25%">{{ book.requirements }} </span>
+      <span fxFlex="15%">{{ book.status }}</span>
+      <span fxFlex="20%">{{ book.start_date | date }}</span>
+      <span fxFlex="20%">{{ book.end_date | date }}</span>
+    </div> -->
+
+    <div *ngFor="let book of booksList" fxLayout="row">
+      <span fxFlex="25%">{{ book.lastname}} </span>
+      <span fxFlex="15%">{{ book.status }}</span>
+      <span fxFlex="20%">{{ book.start_date | date }}</span>
+      <span fxFlex="20%">{{ book.end_date | date }}</span>
+    </div>
+  </div>
+</div>
