@@ -14,6 +14,8 @@ export class BooklistComponent implements OnInit {
 
   books: Observable<Book[]>;
   user: Observable<any>;
+  booksList = [];
+  booksOb: Observable<Book[]>;
 
   constructor(private bookService: BookService, private userService: UserService) {
     const userRef = this.userService.getReferenceUser().ref;
@@ -22,13 +24,45 @@ export class BooklistComponent implements OnInit {
 
   ngOnInit() {
     this.books.subscribe((booksData: Book[]) => {
+      this.booksList = [];
       booksData.forEach((book: Book) => {
-        // book.user.get().then(data => console.log(data.data()));
+        // book.userData = { firstname: 'Juan' };
         book.user.get().then(data => {
-          console.log(data.data());
+          const userData = data.data();
+          const shallowCopy = { ...book, ...userData };
+          // book.user = userData;
+          console.log(this.books);
+          this.booksList.push(shallowCopy);
         });
       });
     });
+
+    // this.booksOb = this.books.map(response => {
+    //   // console.log('respopnse', response);
+    //   const items = response;
+    //   items.forEach(item => {
+    //     item.user.get().then(data => {
+    //       const userData = data.data();
+    //       item.userData = userData;
+    //     });
+    //     // item.userData = 'juan';
+    //   });
+    //   return items;
+    // });
+    // this.booksOb.subscribe();
+    // this.books.subscribe((booksData: Book[]) => {
+    //   this.booksList = [];
+    //   booksData.forEach((book: Book) => {
+    //     book.userData = { firstname: 'Juan' };
+    //     book.user.get().then(data => {
+    //       const userData = data.data();
+    //       const shallowCopy = { ...book, ...userData };
+    //       // book.user = userData;
+    //       console.log(this.books);
+    //       this.booksList.push(shallowCopy);
+    //     });
+    //   });
+    // });
   }
 
 }
